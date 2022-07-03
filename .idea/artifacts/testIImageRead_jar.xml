@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="testIImageRead:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/testIImageRead_jar</output-path>
+    <root id="archive" name="testIImageRead.jar">
+      <element id="module-output" name="testIImageRead" />
+    </root>
+  </artifact>
+</component>
