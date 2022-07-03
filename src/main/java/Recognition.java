@@ -100,13 +100,7 @@ public class Recognition {
             d[0] = j;
 
             int min = Math.max(1, j - threshold); //вычислить индексы, ограничить размер массива
-            //int max = (j > Integer.MAX_VALUE - threshold) ? N1 : Math.min(N1, j + threshold);
-            int max;
-            if (j > Integer.MAX_VALUE - threshold) {
-                max = N1;
-            } else {
-                max = Math.min(N1, j + threshold);
-            }
+            int max = (j > Integer.MAX_VALUE - threshold) ? N1 : Math.min(N1, j + threshold);
 
             if (min > max) {
                 return -1;
@@ -117,13 +111,10 @@ public class Recognition {
             }
 
             for (int i = min; i <= max; i++) { //выполняет итерацию [min, max] в строке символов "source"
-                if (source.charAt(i - 1) == t_j) {
-                    d[i] = p[i - 1]; //по диагонали влево и вверх
-                } else {
-                    d[i] = 1 + Math.min(Math.min(d[i - 1], p[i]), p[i - 1]); //1 + минимум от ячейки слева, вверх, по диагонали влево и вверх
-                }
+                d[i] = (source.charAt(i - 1) == t_j) ? p[i - 1] : 1 + Math.min(Math.min(d[i - 1], p[i]), p[i - 1]);
+                //по диагонали влево и вверх
+                //1 + минимум от ячейки слева, вверх, по диагонали влево и вверх
             }
-
             // копировать текущие значения расстояний
             temp = p;
             p = d;

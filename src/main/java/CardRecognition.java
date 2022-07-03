@@ -8,8 +8,9 @@ import java.io.IOException;
 public class CardRecognition {
     public static void main(String[] args) {
         long time = System.currentTimeMillis();
-        Recognition RF;
-        final File dir = new File(args[0]);
+        Recognition recognition;
+        //final File dir = new File(args[0]);
+        final File dir = new File("source/");
         if(dir.isDirectory())
         {
             for(File item : dir.listFiles(ImageFilter.IMAGE_FILTER)){
@@ -20,10 +21,10 @@ public class CardRecognition {
                     e.printStackTrace();
                 }
                 StringBuilder results = new StringBuilder();
-                RF = new Recognition(image);
+                recognition = new Recognition(image);
                 for (int i=0; i<5; i++) {
-                    results.append(RF.getRankOrSuit(i, 'r'))
-                                .append(RF.getRankOrSuit(i, 's'));
+                    results.append(recognition.getRankOrSuit(i, 'r'))
+                                .append(recognition.getRankOrSuit(i, 's'));
                 }
                 System.out.println(item.getName() + " - " + results);
             }
